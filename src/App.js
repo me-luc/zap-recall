@@ -3,13 +3,15 @@ import Header from "./header/Header";
 import Questions from "./questions/Questions";
 import Footer from "./footer/Footer";
 
+import questions from "./questions";
+
 import "./assets/css/reset.css";
 
 function App() {
 	return (
 		<StyledApp>
 			<Header />
-			<Questions />
+			<Questions questions={questions} />
 			<Footer />
 		</StyledApp>
 	);

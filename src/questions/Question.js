@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import playButton from "../assets/img/seta_play.png";
 
-export default function Question({ index }) {
+export default function Question({ index, question }) {
 	return (
 		<StyledQuestion>
-			<Title>QUESTION {index}</Title>
+			<Title>
+				QUESTION {index} - {question}
+			</Title>
 			<img src={playButton} alt="play button" />
 		</StyledQuestion>
 	);
@@ -16,6 +18,7 @@ const StyledQuestion = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	margin-bottom: 20px;
 
 	box-sizing: border-box;
 	padding: 25px;
@@ -28,6 +31,11 @@ const StyledQuestion = styled.div`
 		cursor: pointer;
 		width: 20px;
 		height: 23px;
+		margin-left: 15px;
+	}
+
+	@media (min-width: 700px) {
+		width: 40vw;
 	}
 `;
 

@@ -1,4 +1,4 @@
-export const questions = [
+const questions = [
 	{
 		question: "O que é JSX?",
 		answer: "Uma extensão da linguagem JavaScript",
@@ -32,3 +32,5 @@ export const questions = [
 		answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente",
 	},
 ];
+
+export default questions;
