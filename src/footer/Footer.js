@@ -1,7 +1,9 @@
+import { StyledFooter, StyledText } from "./footer-styles";
+
 export default function Footer() {
 	return (
-		<div>
-			<h1>FOOTER</h1>
-		</div>
+		<StyledFooter>
+			<StyledText>FOOTER</StyledText>
+		</StyledFooter>
 	);
 }
