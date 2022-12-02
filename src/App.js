@@ -6,25 +6,17 @@ import Footer from "./footer/Footer";
 import questions from "./questions";
 
 import "./assets/css/reset.css";
+import GlobalStyle from "./globalStyles";
 
 function App() {
 	return (
-		<StyledApp>
+		<>
+			<GlobalStyle />
 			<Header />
 			<Questions questions={questions} />
 			<Footer />
-		</StyledApp>
+		</>
 	);
 }
 
 export default App;
-
-const StyledApp = styled.div`
-	width: 100vw;
-	height: 100vh;
-	background-color: #fb6b6b;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-`;

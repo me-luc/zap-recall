@@ -1,12 +1,16 @@
 import Question from "./Question";
+import { QuestionsBox } from "./questions-styles";
 
 export default function Questions({ questions }) {
 	return (
-		<div>
-			<Question index={"1"} />
+		<QuestionsBox>
 			{questions.map((item, index) => (
-				<Question index={index} question={item.question} />
+				<Question
+					index={index}
+					question={item.question}
+					answer={item.answer}
+				/>
 			))}
-		</div>
+		</QuestionsBox>
 	);
 }
