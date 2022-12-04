@@ -1,32 +1,45 @@
 import styled from "styled-components";
 
-export const StyledButton = styled.button`
-	width: 120px;
-	height: 38px;
+export const StyledButtonModel = styled.div`
+	button {
+		width: 120px;
+		min-width: 80px;
+		height: 38px;
 
-	background: ${(props) => props.color};
-	border-radius: 5px;
+		background: ${(props) => props.color};
+		border-radius: 5px;
 
-	font-family: "Recursive";
-	font-style: normal;
-	font-weight: 400;
-	font-size: 12px;
-	line-height: 14px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
+		font-family: "Recursive";
+		font-style: normal;
+		font-weight: 400;
+		font-size: 12px;
+		line-height: 14px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
 
-	color: #ffffff;
+		color: #ffffff;
+
+		@media (max-width: 1030px) {
+			width: 80px;
+		}
+	}
 `;
 
 function handleStatus(status) {
 	switch (status) {
+		case 0:
+			console.log("BLACK");
+			return "#000";
 		case 1:
+			console.log("RED");
 			return "#FF3030";
 		case 2:
+			console.log("ORANGE");
 			return "#FF922E";
 		case 3:
+			console.log("GREEN");
 			return "#2FBE34";
 		default:
 			return "#000";
@@ -49,13 +62,16 @@ export const StyledQuestion = styled.div`
 	border-radius: 5px;
 
 	img {
-		cursor: pointer;
+		${(props) => !props.status && "cursor: pointer;"}
 		width: 20px;
 		height: 23px;
 		margin-left: 15px;
 	}
 
-	${({ status }) => handleStatus(status)}
+	p {
+		color: ${(props) => handleStatus(props.status)};
+		${(props) => props.status && "text-decoration-line: line-through;"}
+	}
 
 	@media (min-width: 700px) {
 		width: 40vw;
@@ -97,6 +113,11 @@ export const QuestionsBox = styled.div`
 	overflow-y: scroll;
 
 	margin-bottom: 40px;
+
+	@media (max-height: 850px) {
+		height: 520px;
+		overflow-y: scroll;
+	}
 `;
 
 export const StyledAskQuestion = styled(StyledQuestion)`

@@ -1,9 +1,11 @@
 import { StyledFooter, StyledText } from "./footer-styles";
 
-export default function Footer() {
+export default function Footer({ totalQuestions, finishedQuestions }) {
 	return (
 		<StyledFooter>
-			<StyledText>FOOTER</StyledText>
+			<StyledText>
+				{finishedQuestions}/{totalQuestions} CONCLUÍDOS
+			</StyledText>
 		</StyledFooter>
 	);
 }

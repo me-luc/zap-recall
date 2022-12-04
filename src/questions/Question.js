@@ -1,104 +1,59 @@
 import { useState } from "react";
-import playButton from "../assets/img/seta_play.png";
-import turnAround from "../assets/img/seta_virar.png";
+import ScreenShowAnswer from "./ScreenShowAnswer";
+import ScreenAskQuestion from "./ScreenAskQuestion";
+import ScreenQuestionNumber from "./ScreenQuestionNumber";
 
-import {
-	StyledButton,
-	Title,
-	StyledQuestion,
-	StyledAskQuestion,
-	StyledShowAnswer,
-} from "./questions-styles";
-
-export default function Question({ index, question, answer }) {
-	const [cardState, setCardState] = useState(0);
+export default function Question({
+	index,
+	question,
+	answer,
+	finishedQuestions,
+	setFinishedQuestions,
+}) {
+	const [cardState, setCardState] = useState(1);
 	// 0-initial | 1-question | 2-answer | 3-question status
-	const [status, setStatus] = useState("");
+	const [status, setStatus] = useState(0);
 	//1-Não lembrei | 2-Quase não lembrei | 3-Zap!
 
 	switch (cardState) {
-		case 0:
-			return (
-				<QuestionNumber
-					cardState={cardState}
-					setCardState={setCardState}
-				/>
-			);
 		case 1:
 			return (
-				<AskQuestion
-					question={question}
+				<ScreenQuestionNumber
+					index={index}
+					status={status}
 					cardState={cardState}
 					setCardState={setCardState}
 				/>
 			);
 		case 2:
 			return (
-				<ShowAnswer
-					answer={answer}
+				<ScreenAskQuestion
+					question={question}
 					cardState={cardState}
 					setCardState={setCardState}
-					setStatus={setStatus}
 				/>
 			);
 		case 3:
 			return (
-				<QuestionNumber
-					status={status}
+				<ScreenShowAnswer
+					answer={answer}
 					cardState={cardState}
 					setCardState={setCardState}
+					setStatus={setStatus}
+					finishedQuestions={finishedQuestions}
+					setFinishedQuestions={setFinishedQuestions}
+				/>
+			);
+		case 4:
+			return (
+				<ScreenQuestionNumber
+					index={index}
+					cardState={cardState}
+					setCardState={setCardState}
+					status={status}
 				/>
 			);
 		default:
-			return <QuestionNumber>Erro ao renderizar</QuestionNumber>;
+			return <ScreenQuestionNumber index={"DEFAULT"} />;
 	}
-}
-
-function QuestionNumber({ index, setCardState, cardState }) {
-	return (
-		<StyledQuestion>
-			<Title>QUESTION {index}</Title>
-			<img
-				src={playButton}
-				alt="play button"
-				onClick={() => setCardState(cardState + 1)}
-			/>
-		</StyledQuestion>
-	);
-}
-
-function AskQuestion({ question, setCardState, cardState }) {
-	return (
-		<StyledAskQuestion>
-			<Title>{question}</Title>
-			<img
-				src={turnAround}
-				alt="turn around button"
-				onClick={() => setCardState(cardState + 1)}
-			/>
-		</StyledAskQuestion>
-	);
-}
-
-function ShowAnswer({ answer, setStatus, setCardState, cardState }) {
-	return (
-		<StyledShowAnswer>
-			<Title>{answer}</Title>
-			<div className="button-options">
-				<Button color={"#FF3030"} onClick={""}>
-					Não lembrei
-				</Button>
-				<Button color={"#FF922E"} onClick={setStatus(2)}>
-					Quase não lembrei
-				</Button>
-				<Button color={"#2FBE34"} onClick={setStatus(3)}>
-					Zap!
-				</Button>
-			</div>
-		</StyledShowAnswer>
-	);
-}
-
-function Button({ children, color }) {
-	return <StyledButton color={color}>{children}</StyledButton>;
 }
