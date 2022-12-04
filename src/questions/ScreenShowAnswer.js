@@ -18,7 +18,7 @@ export default function ScreenShowAnswer({
 		}
 	}
 	return (
-		<StyledShowAnswer>
+		<StyledShowAnswer data-test="flashcard">
 			<Title data-test="flashcard-text">{answer}</Title>
 			<div className="button-options">
 				<StyledButton color={"#FF3030"}>
