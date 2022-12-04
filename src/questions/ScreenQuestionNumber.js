@@ -16,6 +16,7 @@ export default function ScreenQuestionNumber({
 		}
 	}
 	const imgArr = [playButton, errorImg, almostImg, correctImg];
+	const dataTest = ["play-bt", "no-icon", "partial-ico", "zap-icon"];
 	return (
 		<StyledQuestion data-test="flashcard" status={status}>
 			<Title data-test="flashcard-text">
@@ -25,7 +26,7 @@ export default function ScreenQuestionNumber({
 				src={imgArr[status]}
 				alt="play button"
 				onClick={handleClick}
-				data-test="play-btn partial-icon zap-icon no-icon"
+				data-test={dataTest[status]}
 			/>
 		</StyledQuestion>
 	);
