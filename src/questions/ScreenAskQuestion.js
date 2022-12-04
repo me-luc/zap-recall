@@ -7,19 +7,16 @@ export default function ScreenAskQuestion({
 	cardState,
 }) {
 	function handleClick() {
-		try {
-			setCardState(cardState + 1);
-		} catch (error) {
-			console.log("ERROR IN ASKING QUESTION");
-		}
+		setCardState(cardState + 1);
 	}
 	return (
-		<StyledAskQuestion>
-			<Title>{question}</Title>
+		<StyledAskQuestion data-test="flashcard">
+			<Title data-test="flashcard-text">{question}</Title>
 			<img
 				src={turnAround}
 				alt="turn around button"
 				onClick={handleClick}
+				data-test="turn-btn"
 			/>
 		</StyledAskQuestion>
 	);

@@ -19,18 +19,26 @@ export default function ScreenShowAnswer({
 	}
 	return (
 		<StyledShowAnswer>
-			<Title>{answer}</Title>
+			<Title data-test="flashcard-text">{answer}</Title>
 			<div className="button-options">
 				<StyledButton color={"#FF3030"}>
-					<button onClick={() => handleClick(1)}> Não lembrei</button>
+					<button onClick={() => handleClick(1)} data-test="no-btn">
+						{" "}
+						Não lembrei
+					</button>
 				</StyledButton>
 				<StyledButton color={"#FF922E"}>
-					<button onClick={() => handleClick(2)}>
+					<button
+						onClick={() => handleClick(2)}
+						data-test="partial-btn">
 						Quase não lembrei
 					</button>
 				</StyledButton>
 				<StyledButton color={"#2FBE34"}>
-					<button onClick={() => handleClick(3)}> Zap!</button>
+					<button onClick={() => handleClick(3)} data-test="zap-btn">
+						{" "}
+						Zap!
+					</button>
 				</StyledButton>
 			</div>
 		</StyledShowAnswer>

@@ -17,11 +17,16 @@ export default function ScreenQuestionNumber({
 	}
 	const imgArr = [playButton, errorImg, almostImg, correctImg];
 	return (
-		<StyledQuestion status={status}>
-			<Title>
+		<StyledQuestion data-test="flashcard" status={status}>
+			<Title data-test="flashcard-text">
 				{"QUESTION"} {index}
 			</Title>
-			<img src={imgArr[status]} alt="play button" onClick={handleClick} />
+			<img
+				src={imgArr[status]}
+				alt="play button"
+				onClick={handleClick}
+				data-test="play-btn partial-icon zap-icon no-icon"
+			/>
 		</StyledQuestion>
 	);
 }
